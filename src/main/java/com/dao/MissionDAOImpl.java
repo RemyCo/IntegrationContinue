@@ -31,23 +31,23 @@ public class MissionDAOImpl implements MissionDAO {
 
 			// parcourt des éléments de réponse
 			while (resultSet.next()) {
-				Mission mission = new Mission();
+				Mission villes = new Mission();
 
-				mission.setId(resultSet.getInt("id"));
-				mission.setNumeroTrain(resultSet.getString("numero"));
-				mission.setDateCirculation(resultSet.getString("dateCirculation"));
-				mission.setHoraireDepart(resultSet.getString("horaireDepart"));
-				mission.setHoraireDestination(resultSet.getString("horaireDestination"));
+				villes.setId(resultSet.getInt("id"));
+				villes.setNumeroTrain(resultSet.getString("numero"));
+				villes.setDateCirculation(resultSet.getString("dateCirculation"));
+				villes.setHoraireDepart(resultSet.getString("horaireDepart"));
+				villes.setHoraireDestination(resultSet.getString("horaireDestination"));
 				LieuMission lieuMissionOrigine = new LieuMission();
 				lieuMissionOrigine.setUIC(resultSet.getString("lieuOrigineUIC"));
 				lieuMissionOrigine.setLibPr(resultSet.getString("lieuOrigineLibPr"));
-				mission.setLieuOrigine(lieuMissionOrigine);
+				villes.setLieuOrigine(lieuMissionOrigine);
 				LieuMission lieuMissionDestination = new LieuMission();
 				lieuMissionDestination.setUIC(resultSet.getString("lieuDestinationUIC"));
 				lieuMissionDestination.setLibPr(resultSet.getString("lieuDestinationLibPr"));
-				mission.setLieuDestination(lieuMissionDestination);
+				villes.setLieuDestination(lieuMissionDestination);
 
-				listMission.add(mission);
+				listMission.add(villes);
 			}
 
 			// close de la connexion
