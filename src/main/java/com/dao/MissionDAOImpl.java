@@ -42,10 +42,10 @@ public class MissionDAOImpl implements MissionDAO {
 				lieuMissionOrigine.setUIC(resultSet.getString("lieuOrigineUIC"));
 				lieuMissionOrigine.setLibPr(resultSet.getString("lieuOrigineLibPr"));
 				villes.setLieuOrigine(lieuMissionOrigine);
-				LieuMission lieuMissionDestination = new LieuMission();
-				lieuMissionDestination.setUIC(resultSet.getString("lieuDestinationUIC"));
-				lieuMissionDestination.setLibPr(resultSet.getString("lieuDestinationLibPr"));
-				villes.setLieuDestination(lieuMissionDestination);
+				LieuMission lieuVillesDestination = new LieuMission();
+				lieuVillesDestination.setUIC(resultSet.getString("lieuDestinationUIC"));
+				lieuVillesDestination.setLibPr(resultSet.getString("lieuDestinationLibPr"));
+				villes.setLieuDestination(lieuVillesDestination);
 
 				listMission.add(villes);
 			}
