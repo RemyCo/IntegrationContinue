@@ -7,12 +7,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Coordonnees implements Serializable {	
+public class Coordonnee implements Serializable {	
 	
 	/**
 	 * Serial IUD for serialization.
@@ -21,4 +20,21 @@ public class Coordonnees implements Serializable {
 	
 	private String latitude;	
 	private String longitude;
+	
+	public String getLatitude() {
+		return latitude;
+	}
+	
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+	
+	public String getLongitude() {
+		return longitude;
+	}
+	
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
+	}	
+
 }

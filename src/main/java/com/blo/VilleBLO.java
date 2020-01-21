@@ -12,5 +12,4 @@ public interface VilleBLO {
 	
 	public void updateVille(String codePostal, Ville ville) throws VilleException;
 
-
 }

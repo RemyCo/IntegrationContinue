@@ -13,5 +13,4 @@ public interface VilleDAO {
 	public void saveVille(Ville ville);
 	
 	public void updateVille(String codePostal, Ville ville);
-
 }

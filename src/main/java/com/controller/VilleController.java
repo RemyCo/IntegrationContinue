@@ -4,9 +4,6 @@ import java.util.ArrayList;
 
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,9 +21,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Slf4j
 @RestController
+//@RequestMapping("/path")
 class VilleController {
-	
-	Logger logger = Logger.getLogger("logger");
 	
 	@Autowired
 	VilleBLO villeService;
@@ -40,13 +36,26 @@ class VilleController {
 		return listVille;
 	}
 	
+	// autre méthode avec des mappings via des Map
+	/*@RequestMapping(value="/ville", method=RequestMethod.POST)
+	@ResponseBody
+	//public String insert(@RequestBody String num) {
+	public void insert(@RequestBody HashMap<String, HashMap<String, String>> requestData) {
+		
+	    HashMap<String, String> customerInfo = requestData.get("param");
+	    String num = customerInfo.get("num");
+	    String date = customerInfo.get("date");
+	    // ...
+	    
+	}*/
+	
 	@RequestMapping(value="/ville", method=RequestMethod.POST)
 	@ResponseBody
 	public String insert(@RequestBody Ville ville, Model model) {
 	//public String insert(@RequestBody String num) {
 	    //System.out.println(num);
-		logger.log(Level.INFO, "Appel POST");
-		logger.log(Level.INFO, "ville Post : " + ville.toString());
+		//log.info("Appel POST");
+		//log.info("ville Post : " + ville.toString());
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			String jsonInString = mapper.writeValueAsString(ville);
@@ -68,7 +77,7 @@ class VilleController {
 		//log.info("Appel PUT");
 
 	    System.out.println(codePostal);
-	    System.out.println(ville.getCodePostal());
+	    //System.out.println(ville.getCodePostal());
 	    villeService.updateVille(codePostal, ville);
 		return "index";
 	}
