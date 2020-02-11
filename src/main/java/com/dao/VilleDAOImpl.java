@@ -10,36 +10,32 @@ import java.util.ArrayList;
 import org.springframework.stereotype.Repository;
 
 import com.config.JDBCConfigurationSol1;
-import com.dto.Coordonnee;
-import com.dto.Ville;
+import com.dto.Coordinate;
+import com.dto.City;
 
 @Repository
 public class VilleDAOImpl implements VilleDAO {
 	
 	@Override
-	public ArrayList<Ville> findAllVilles() {
-		ArrayList<Ville> listVille = new ArrayList<Ville>();
+	public ArrayList<City> findAllVilles() {
+		ArrayList<City> listVille = new ArrayList<City>();
 
 		try {
-			// solution 1
-			Connection con = JDBCConfigurationSol1.getConnection();
-			// solution 2
-			//Connection con = JDBCConfigurationSol2.getConnection();
-			Statement statement = con.createStatement();
 			
-			// execute la requete 
+			Connection con = JDBCConfigurationSol1.getConnection();
+			Statement statement = con.createStatement();
 			ResultSet resultSet = statement.executeQuery("SELECT * FROM ville_france");
 			
-            // parcourt des éléments de réponse
+			
 			while(resultSet.next()){
-				Ville ville = new Ville();
+				City ville = new City();
 				
 				ville.setCodeCommune(resultSet.getString("Code_commune_INSEE"));
 				ville.setNomCommune(resultSet.getString("Nom_commune"));
 				ville.setCodePostal(resultSet.getString("Code_postal"));
 				ville.setLibelleAcheminement(resultSet.getString("Libelle_acheminement"));
 				ville.setLigne(resultSet.getString("Ligne_5"));
-				Coordonnee coordonnee = new Coordonnee();
+				Coordinate coordonnee = new Coordinate();
 				coordonnee.setLatitude(resultSet.getString("Latitude"));
 				coordonnee.setLongitude(resultSet.getString("Longitude"));
 				ville.setCoordonnee(coordonnee);
@@ -47,7 +43,6 @@ public class VilleDAOImpl implements VilleDAO {
 				listVille.add(ville);
 			}
 			
-            // close de la connexion
 			resultSet.close();
 			statement.close();
 			    
@@ -59,32 +54,25 @@ public class VilleDAOImpl implements VilleDAO {
     }
 	
 	@Override
-	public ArrayList<Ville> findVilleByCodePostal(String codePostal) {
-		ArrayList<Ville> listVille = new ArrayList<Ville>();
+	public ArrayList<City> findVilleByCodePostal(String codePostal) {
+		ArrayList<City> listVille = new ArrayList<City>();
 
 		try {
-			// solution 1
 			Connection con = JDBCConfigurationSol1.getConnection();
-			// solution 2
-			//Connection con = JDBCConfigurationSol2.getConnection();
-			
-			// solution propre via prepareStatement
 			PreparedStatement statement = con.prepareStatement("SELECT * FROM ville_france where Code_postal = ?");
 			statement.setString(1, codePostal);
-			
-			// execution 
             ResultSet resultSet = statement.executeQuery();
 
-            // parcourt des éléments de réponse
+            
 			while(resultSet.next()){
-				Ville ville = new Ville();
+				City ville = new City();
 				
 				ville.setCodeCommune(resultSet.getString("Code_commune_INSEE"));
 				ville.setNomCommune(resultSet.getString("Nom_commune"));
 				ville.setCodePostal(resultSet.getString("Code_postal"));
 				ville.setLibelleAcheminement(resultSet.getString("Libelle_acheminement"));
 				ville.setLigne(resultSet.getString("Ligne_5"));
-				Coordonnee coordonnee = new Coordonnee();
+				Coordinate coordonnee = new Coordinate();
 				coordonnee.setLatitude(resultSet.getString("Latitude"));
 				coordonnee.setLongitude(resultSet.getString("Longitude"));
 				ville.setCoordonnee(coordonnee);
@@ -92,7 +80,6 @@ public class VilleDAOImpl implements VilleDAO {
 				listVille.add(ville);
 			}
 			
-            // close de la connexion
 			resultSet.close();
 			statement.close();
 			    
@@ -104,19 +91,14 @@ public class VilleDAOImpl implements VilleDAO {
     }
 	
 	@Override
-    public void saveVille(Ville ville) {
+    public void saveCity(City ville) {
 
 		try {
-			// solution 1
 			Connection con = JDBCConfigurationSol1.getConnection();
-			// solution 2
-			//Connection con = JDBCConfigurationSol2.getConnection();
-			
 			String insertTableSQL = "INSERT INTO ville_france "
 					+ "(Code_commune_INSEE, Nom_commune, Code_postal, Libelle_acheminement, Ligne_5, Latitude, Longitude) "
 					+ "VALUES (?,?,?,?,?,?,?) ";
 			
-			// solution propre via prepareStatement
 			PreparedStatement statement = con.prepareStatement(insertTableSQL);
 			statement.setString(1, ville.getCodeCommune());
 			statement.setString(2, ville.getNomCommune());
@@ -125,10 +107,8 @@ public class VilleDAOImpl implements VilleDAO {
 			statement.setString(5, ville.getLigne());
 			statement.setString(6, ville.getCoordonnee().getLatitude());
 			statement.setString(7, ville.getCoordonnee().getLongitude());
-			// execution 
             statement.executeUpdate();
             
-            // close de la connexion
 			statement.close();
 			    
 		} catch (SQLException e) {
@@ -138,19 +118,15 @@ public class VilleDAOImpl implements VilleDAO {
     }
 	
 	@Override
-    public void updateVille(String codePostal, Ville ville) {
+    public void updateCity(String codePostal, City ville) {
 
 		try {
-			// solution 1
 			Connection con = JDBCConfigurationSol1.getConnection();
-			// solution 2
-			//Connection con = JDBCConfigurationSol2.getConnection();
 			
 			String updateTableSQL = "UPDATE ville_france SET "
 					+ "Code_commune_INSEE = ?, Nom_commune = ?, Code_postal = ?, Libelle_acheminement = ?, Ligne_5 = ?, Latitude = ?, Longitude = ? "
 					+ "WHERE Code_postal = ? ";
 			
-			// solution propre via prepareStatement
 			PreparedStatement statement = con.prepareStatement(updateTableSQL);
 			statement.setString(1, ville.getCodeCommune());
 			statement.setString(2, ville.getNomCommune());
@@ -160,10 +136,8 @@ public class VilleDAOImpl implements VilleDAO {
 			statement.setString(6, ville.getCoordonnee().getLatitude());
 			statement.setString(7, ville.getCoordonnee().getLongitude());
 			statement.setString(8, codePostal);
-			// execution 
             statement.executeUpdate();
             
-            // close de la connexion
 			statement.close();
 			    
 		} catch (SQLException e) {

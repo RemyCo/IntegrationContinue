@@ -13,10 +13,8 @@ public class Application {
 		try {
 			SpringApplication.run(Application.class, args);
 			System.out.println("Application demarree !");
-			//log.info("Application demarree !");
 		} catch (Exception e) {
 			System.out.println("Application erreur  \n" + e);
-			//log.error("Application erreur  \n" + e);
 		}
 	}
 }

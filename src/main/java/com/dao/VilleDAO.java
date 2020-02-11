@@ -2,15 +2,15 @@ package com.dao;
 
 import java.util.ArrayList;
 
-import com.dto.Ville;
+import com.dto.City;
 
 public interface VilleDAO {
 	
-	public ArrayList<Ville> findAllVilles();
+	public ArrayList<City> findAllVilles();
 
-    public ArrayList<Ville> findVilleByCodePostal(String codePostal);
+    public ArrayList<City> findVilleByCodePostal(String postalCode);
 
-	public void saveVille(Ville ville);
+	public void saveCity(City city);
 	
-	public void updateVille(String codePostal, Ville ville);
+	public void updateCity(String postalCode, City city);
 }

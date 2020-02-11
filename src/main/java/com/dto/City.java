@@ -6,48 +6,49 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.dto.Coordinate;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Ville implements Serializable {	
+public class City implements Serializable {	
 	
 	/**
 	 * Serial IUD for serialization.
 	 */
 	private static final long serialVersionUID = -8050478362033217382L;
 	
-	private String codeCommune;
-	private String nomCommune;
-	private String codePostal;
+	private String communeCode;
+	private String communeName;
+	private String postalCode;
 	private String libelleAcheminement;	
 	private String ligne;	
-	private Coordonnee coordonnee;
+	private Coordinate coordinate;
 	
 	
 	public String getCodeCommune() {
-		return codeCommune;
+		return communeCode;
 	}
 	
 	public void setCodeCommune(String codeCommune) {
-		this.codeCommune = codeCommune;
+		this.communeCode = codeCommune;
 	}
 	
 	public String getNomCommune() {
-		return nomCommune;
+		return communeName;
 	}
 	
 	public void setNomCommune(String nomCommune) {
-		this.nomCommune = nomCommune;
+		this.communeName = nomCommune;
 	}
 	
 	public String getCodePostal() {
-		return codePostal;
+		return postalCode;
 	}
 	
 	public void setCodePostal(String codePostal) {
-		this.codePostal = codePostal;
+		this.postalCode = codePostal;
 	}
 	
 	public String getLibelleAcheminement() {
@@ -66,12 +67,12 @@ public class Ville implements Serializable {
 		this.ligne = ligne;
 	}
 	
-	public Coordonnee getCoordonnee() {
-		return coordonnee;
+	public Coordinate getCoordonnee() {
+		return coordinate;
 	}
 	
-	public void setCoordonnee(Coordonnee coordonnee) {
-		this.coordonnee = coordonnee;
+	public void setCoordonnee(Coordinate coordonnee) {
+		this.coordinate = coordonnee;
 	}	
 
 }

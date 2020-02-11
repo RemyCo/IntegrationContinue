@@ -15,13 +15,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.blo.VilleBLO;
-import com.dto.Ville;
+import com.dto.City;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Slf4j
 @RestController
-//@RequestMapping("/path")
 class VilleController {
 	
 	@Autowired
@@ -29,40 +28,23 @@ class VilleController {
 
 	@RequestMapping(value="/ville", method=RequestMethod.GET)
 	@ResponseBody
-	public ArrayList<Ville> recover(@RequestParam(required = false, value="codePostal") String codePostal) {
-		//log.info("Appel GET");
+	public ArrayList<City> recover(@RequestParam(required = false, value="codePostal") String codePostal) {
 
-		ArrayList<Ville> listVille =  villeService.getInfoVilles(codePostal);
+		ArrayList<City> listVille =  villeService.getInfoVilles(codePostal);
 		return listVille;
 	}
 	
-	// autre méthode avec des mappings via des Map
-	/*@RequestMapping(value="/ville", method=RequestMethod.POST)
-	@ResponseBody
-	//public String insert(@RequestBody String num) {
-	public void insert(@RequestBody HashMap<String, HashMap<String, String>> requestData) {
-		
-	    HashMap<String, String> customerInfo = requestData.get("param");
-	    String num = customerInfo.get("num");
-	    String date = customerInfo.get("date");
-	    // ...
-	    
-	}*/
 	
 	@RequestMapping(value="/ville", method=RequestMethod.POST)
 	@ResponseBody
-	public String insert(@RequestBody Ville ville, Model model) {
-	//public String insert(@RequestBody String num) {
-	    //System.out.println(num);
-		//log.info("Appel POST");
-		//log.info("ville Post : " + ville.toString());
+	public String insert(@RequestBody City ville, Model model) {
+		
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			String jsonInString = mapper.writeValueAsString(ville);
-			//log.info("ville Json : " + jsonInString);
-
+			
 		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -72,12 +54,10 @@ class VilleController {
 	
 	@RequestMapping(value="/ville/{codePostal}", method=RequestMethod.PUT)
 	@ResponseBody
-	//public String connexion(@RequestBody String num) {
-	public String update(@PathVariable String codePostal, @RequestBody Ville ville, Model model) {
-		//log.info("Appel PUT");
+	
+	public String update(@PathVariable String codePostal, @RequestBody City ville, Model model) {
 
 	    System.out.println(codePostal);
-	    //System.out.println(ville.getCodePostal());
 	    villeService.updateVille(codePostal, ville);
 		return "index";
 	}

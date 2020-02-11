@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Coordonnee implements Serializable {	
+public class Coordinate implements Serializable {	
 	
 	/**
 	 * Serial IUD for serialization.
