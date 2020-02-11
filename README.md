@@ -6,7 +6,7 @@
 
 ![](Deliverables/Screen-Captures/Continuated_Integration_Working.gif)
 
-This Project is a work for a continuated integration course for my last year at my Engineering School. The project use Jenkins and SonarQube to be able to make continuated integration while developping a back-end server that use a data base to get data from cities.
+This Project is a work for a continuous integration course for my last year at my Engineering School. The project use Jenkins and SonarQube to be able to make continuous integration while developping a back-end server that use a data base to get data from cities.
 
 ## Installation
 
