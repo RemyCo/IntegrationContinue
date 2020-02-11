@@ -1,0 +1,121 @@
+Started by GitHub push by RemyCo
+Running as SYSTEM
+Building in workspace /home/eseo/.jenkins/workspace/test
+No credentials specified
+ > /usr/bin/git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > /usr/bin/git config remote.origin.url https://github.com/RemyCo/IntregationContinue.git # timeout=10
+Fetching upstream changes from https://github.com/RemyCo/IntregationContinue.git
+ > /usr/bin/git --version # timeout=10
+ > /usr/bin/git fetch --tags --progress -- https://github.com/RemyCo/IntregationContinue.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > /usr/bin/git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > /usr/bin/git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision 6705af2ca0e530c6df593696cb938d380d3511d1 (refs/remotes/origin/master)
+ > /usr/bin/git config core.sparsecheckout # timeout=10
+ > /usr/bin/git checkout -f 6705af2ca0e530c6df593696cb938d380d3511d1 # timeout=10
+Commit message: "Merge branch 'master' of github.com:RemyCo/IntregationContinue"
+ > /usr/bin/git rev-list --no-walk 7585d69ba303b72b922f614d508af071f79dcc54 # timeout=10
+[test] $ /home/eseo/.jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/scanner_Sonarqube/bin/sonar-scanner -Dsonar.host.url=http://192.168.4.150:9000/ -Dsonar.projectKey=ESEO_TP_Maven -Dsonar.projectName=ESEO_TP_Server_2019_S2 -Dsonar.sourceEncoding=UTF-8 -Dsonar.projectVersion=0.0.1-SNAPSHOT -Dsonar.sources=. -Dsonar.projectBaseDir=/home/eseo/.jenkins/workspace/test
+INFO: Scanner configuration file: /home/eseo/.jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/scanner_Sonarqube/conf/sonar-scanner.properties
+INFO: Project root configuration file: /home/eseo/.jenkins/workspace/test/sonar-project.properties
+INFO: SonarQube Scanner 3.0.3.778
+INFO: Java 11.0.5 Oracle Corporation (64-bit)
+INFO: Linux 5.0.0-37-generic amd64
+INFO: User cache: /home/eseo/.sonar/cache
+INFO: SonarQube server 7.9.2
+INFO: Default locale: "fr_FR", source code encoding: "UTF-8"
+INFO: Load global settings
+INFO: Load global settings (done) | time=82ms
+INFO: Server id: 9CFC3560-AW-AMnJ_BTNfnAo8og6s
+INFO: User cache: /home/eseo/.sonar/cache
+INFO: Load/download plugins
+INFO: Load plugins index
+INFO: Load plugins index (done) | time=66ms
+INFO: Load/download plugins (done) | time=151ms
+INFO: Process project properties
+INFO: Execute project builders
+INFO: Execute project builders (done) | time=10ms
+INFO: Project key: ESEO_TP_Maven
+INFO: Base dir: /home/eseo/.jenkins/workspace/test
+INFO: Working dir: /home/eseo/.jenkins/workspace/test/.scannerwork
+INFO: Load project settings for component key: 'ESEO_TP_Maven'
+INFO: Load project settings for component key: 'ESEO_TP_Maven' (done) | time=25ms
+INFO: Load quality profiles
+INFO: Load quality profiles (done) | time=55ms
+INFO: Detected Jenkins
+INFO: Load active rules
+INFO: Load active rules (done) | time=1510ms
+INFO: Indexing files...
+INFO: Project configuration:
+INFO: 15 files indexed
+INFO: 0 files ignored because of scm ignore settings
+INFO: Quality profile for java: Sonar way
+INFO: Quality profile for xml: Sonar way
+INFO: ------------- Run sensors on module ESEO_TP_Server_2019_S2
+INFO: Load metrics repository
+INFO: Load metrics repository (done) | time=68ms
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by net.sf.cglib.core.ReflectUtils$1 (file:/home/eseo/.sonar/cache/866bb1adbf016ea515620f1aaa15ec53/sonar-javascript-plugin.jar) to method java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain)
+WARNING: Please consider reporting this to the maintainers of net.sf.cglib.core.ReflectUtils$1
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+INFO: Sensor JavaSquidSensor [java]
+INFO: Configured Java source version (sonar.java.source): none
+INFO: JavaClasspath initialization
+WARN: Bytecode of dependencies was not provided for analysis of source files, you might end up with less precise results. Bytecode can be provided using sonar.java.libraries property.
+INFO: JavaClasspath initialization (done) | time=22ms
+INFO: JavaTestClasspath initialization
+INFO: JavaTestClasspath initialization (done) | time=1ms
+INFO: Java Main Files AST scan
+INFO: 11 source files to be analyzed
+INFO: Load project repositories
+INFO: Load project repositories (done) | time=25ms
+INFO: 11/11 source files have been analyzed
+INFO: Java Main Files AST scan (done) | time=2563ms
+INFO: Java Test Files AST scan
+INFO: 0 source files to be analyzed
+INFO: Java Test Files AST scan (done) | time=1ms
+INFO: Sensor JavaSquidSensor [java] (done) | time=3554ms
+INFO: Sensor JaCoCo XML Report Importer [jacoco]
+INFO: Sensor JaCoCo XML Report Importer [jacoco] (done) | time=2ms
+INFO: Sensor SurefireSensor [java]
+INFO: parsing [/home/eseo/.jenkins/workspace/test/target/surefire-reports]
+INFO: Sensor SurefireSensor [java] (done) | time=1ms
+INFO: 0/0 source files have been analyzed
+INFO: Sensor JaCoCoSensor [java]
+INFO: Sensor JaCoCoSensor [java] (done) | time=1ms
+INFO: Sensor JavaXmlSensor [java]
+INFO: 1 source files to be analyzed
+INFO: 1/1 source files have been analyzed
+INFO: Sensor JavaXmlSensor [java] (done) | time=233ms
+INFO: Sensor HTML [web]
+INFO: Sensor HTML [web] (done) | time=11ms
+INFO: Sensor XML Sensor [xml]
+INFO: 1 source files to be analyzed
+INFO: 1/1 source files have been analyzed
+INFO: Sensor XML Sensor [xml] (done) | time=214ms
+INFO: ------------- Run sensors on project
+INFO: Sensor Zero Coverage Sensor
+INFO: Sensor Zero Coverage Sensor (done) | time=17ms
+INFO: Sensor Java CPD Block Indexer
+INFO: Sensor Java CPD Block Indexer (done) | time=79ms
+INFO: SCM provider for this project is: git
+INFO: 1 files to be analyzed
+INFO: 1/1 files analyzed
+INFO: 5 files had no CPD blocks
+INFO: Calculating CPD for 6 files
+INFO: CPD calculation finished
+INFO: Analysis report generated in 139ms, dir size=113 KB
+INFO: Analysis report compressed in 62ms, zip size=37 KB
+INFO: Analysis report uploaded in 56ms
+INFO: ANALYSIS SUCCESSFUL, you can browse http://192.168.4.150:9000/dashboard?id=ESEO_TP_Maven
+INFO: Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+INFO: More about the report processing at http://192.168.4.150:9000/api/ce/task?id=AW_I8BvOUVxda9KE2QBv
+INFO: Analysis total time: 10.270 s
+INFO: ------------------------------------------------------------------------
+INFO: EXECUTION SUCCESS
+INFO: ------------------------------------------------------------------------
+INFO: Total time: 12.015s
+INFO: Final Memory: 16M/59M
+INFO: ------------------------------------------------------------------------
+Finished: SUCCESS
